@@ -201,11 +201,11 @@ export const projects = [
         type: "Web",
     },
     {
-        name: "TourGuide",
-        description: "Application d'aide au voyage par géolocalisation. Propose des attractions touristiques à proximité, attribue des points de récompense et suggère des offres de voyage personnalisées.",
-        stack: ["Java 11", "Spring Boot", "Gradle", "Microservices", "Swagger", "GitLab CI"],
+        name: "VoxBridge",
+        description: "Application de communication vocale et textuelle en temps réel. Architecture microservices avec passerelle API, WebSocket et déploiement continu via GitLab CI.",
+        stack: ["Python", "C#", "WebSocket", "REST", "GitLab CI", "Docker"],
         github: "",
-        gitlab: "https://gitlab.com/dowesw/projettourguide",
+        gitlab: "https://gitlab.com/dowesw/voxbridge",
         type: "API",
     },
     {
