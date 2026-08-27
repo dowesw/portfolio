@@ -29,8 +29,8 @@ export default function Hero() {
             {/* Grid overlay */}
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
 
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pt-32">
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-24 sm:py-24 sm:pt-32">
+                <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16">
 
                     {/* Left – Text */}
                     <div className="flex-1 text-center lg:text-left">
@@ -40,10 +40,10 @@ export default function Hero() {
                             {t.hero.available} · 🇨🇦 {profile.location}
                         </div>
 
-                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-4 leading-none tracking-tight">
+                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-4 leading-none tracking-tight">
                             <span className="gradient-text">{profile.name.split(' ')[0]}</span>
                             <br />
-                            <span className="text-white/90 text-4xl sm:text-5xl lg:text-6xl font-bold">{profile.name.split(' ').slice(1).join(' ')}</span>
+                            <span className="text-white/90 text-3xl sm:text-4xl lg:text-6xl font-bold">{profile.name.split(' ').slice(1).join(' ')}</span>
                         </h1>
 
                         <p className="text-xl sm:text-2xl font-semibold mb-2" style={{ background: 'linear-gradient(90deg,#a5b4fc,#60a5fa,#c084fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
@@ -54,26 +54,26 @@ export default function Hero() {
                         </p>
 
                         {/* CTAs */}
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
                             <a href="#contact"
-                                className="relative px-8 py-3.5 rounded-full font-bold text-white overflow-hidden group transition-all hover:-translate-y-1"
+                                className="relative px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold text-white overflow-hidden group transition-all hover:-translate-y-1"
                                 style={{ background: 'linear-gradient(135deg, #6366f1, #3b82f6)' }}>
                                 <span className="relative z-10">{t.hero.contactBtn}</span>
                                 <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'linear-gradient(135deg,#4f46e5,#2563eb)' }} />
                             </a>
                             <a href="#projects"
-                                className="px-8 py-3.5 rounded-full font-bold text-slate-300 hover:text-white glass glass-hover transition-all hover:-translate-y-1">
+                                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold text-slate-300 hover:text-white glass glass-hover transition-all hover:-translate-y-1">
                                 {t.hero.projectsBtn}
                             </a>
                             <a href={`${import.meta.env.BASE_URL}cv.pdf`} download="Guillaume_Mbella_CV.pdf"
-                                className="flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-slate-400 hover:text-white border border-white/10 hover:border-white/30 transition-all hover:-translate-y-1">
+                                className="flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold text-slate-400 hover:text-white border border-white/10 hover:border-white/30 transition-all hover:-translate-y-1">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                                 {t.hero.downloadCV}
                             </a>
                         </div>
 
                         {/* Social */}
-                        <div className="flex justify-center lg:justify-start gap-4">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3">
                             {[
                                 { href: profile.github, icon: <GithubIcon />, label: 'GitHub', color: 'hover:text-white hover:border-white/30' },
                                 { href: profile.gitlab, icon: <GitlabIcon />, label: 'GitLab', color: 'hover:text-orange-400 hover:border-orange-400/30' },
@@ -81,15 +81,16 @@ export default function Hero() {
                                 { href: profile.malt, icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0L1.5 6v12L12 24l10.5-6V6L12 0zm0 2.4l8.1 4.65v9.9L12 21.6l-8.1-4.65V7.05L12 2.4z" /></svg>, label: 'Malt', color: 'hover:text-red-400 hover:border-red-400/30' },
                             ].map(s => (
                                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                                    className={`flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 text-slate-400 text-sm font-medium transition-all ${s.color}`}>
-                                    {s.icon}{s.label}
+                                    className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-full border border-white/10 text-slate-400 text-sm font-medium transition-all ${s.color}`}>
+                                    {s.icon}
+                                    <span className="hidden sm:inline">{s.label}</span>
                                 </a>
                             ))}
                         </div>
                     </div>
 
                     {/* Right – Photo */}
-                    <div className="flex-shrink-0 flex justify-center lg:justify-end">
+                    <div className="flex-shrink-0 flex justify-center lg:justify-end order-first lg:order-last">
                         <div className="relative">
                             {/* Outer spinning ring */}
                             <div className="absolute -inset-4 rounded-full animate-spin-slow opacity-60"
@@ -102,18 +103,18 @@ export default function Hero() {
                                 <img
                                     src={profile.avatar}
                                     alt={profile.name}
-                                    className="w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover"
+                                    className="w-44 h-44 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full object-cover"
                                 />
                             </div>
                             {/* Badge CGI */}
-                            <div className="absolute -bottom-3 -right-3 glass border border-white/10 rounded-2xl px-4 py-2.5 text-sm shadow-xl">
-                                <p className="text-white font-bold">CGI</p>
-                                <p className="text-slate-400 text-xs">{t.hero.cgiRole}</p>
+                            <div className="absolute -bottom-4 -right-2 sm:-bottom-3 sm:-right-3 glass border border-white/10 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl">
+                                <p className="text-white font-bold text-xs sm:text-sm">CGI</p>
+                                <p className="text-slate-400 text-[10px] sm:text-xs">{t.hero.cgiRole}</p>
                             </div>
                             {/* Badge XP */}
-                            <div className="absolute -top-3 -left-3 glass border border-indigo-500/30 rounded-2xl px-4 py-2.5 text-sm shadow-xl">
-                                <p className="gradient-text font-black text-2xl leading-none">10+</p>
-                                <p className="text-slate-400 text-xs">{t.hero.yearsExp}</p>
+                            <div className="absolute -top-4 -left-2 sm:-top-3 sm:-left-3 glass border border-indigo-500/30 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl">
+                                <p className="gradient-text font-black text-xl sm:text-2xl leading-none">10+</p>
+                                <p className="text-slate-400 text-[10px] sm:text-xs">{t.hero.yearsExp}</p>
                             </div>
                         </div>
                     </div>
