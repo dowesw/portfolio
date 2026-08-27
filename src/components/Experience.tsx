@@ -4,6 +4,7 @@ import { useLanguage } from '../i18n/LanguageContext';
 const typeBadge: Record<string, string> = {
     CDI: 'bg-emerald-900/40 text-emerald-300 border border-emerald-500/30',
     Freelance: 'bg-amber-900/40 text-amber-300 border border-amber-500/30',
+    Stage: 'bg-violet-900/40 text-violet-300 border border-violet-500/30',
 };
 
 export default function Experience() {

@@ -2,7 +2,7 @@ import { education } from '../data/portfolio';
 import { useLanguage } from '../i18n/LanguageContext';
 
 export default function About() {
-    const { t } = useLanguage();
+    const { t, lang } = useLanguage();
     return (
         <section id="about" className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #050b18 0%, #0a0f1e 100%)' }}>
             <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '32px 32px' }} />
@@ -46,13 +46,17 @@ export default function About() {
                         <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
                             <span className="text-indigo-400">🎓</span> {t.about.educationTitle}
                         </h3>
-                        {education.map((edu) => (
-                            <div key={edu.degree} className="glass rounded-2xl p-5 border border-indigo-500/20">
-                                <p className="text-white font-bold mb-1">{t.about.educationDegree}</p>
-                                <p className="text-indigo-300 text-sm mb-1">{edu.school}</p>
-                                <p className="text-slate-500 text-xs">{edu.year} · {t.about.educationNote}</p>
-                            </div>
-                        ))}
+                        {education.map((edu) => {
+                            const eduDegree = lang === 'en' ? edu.degreeEn : edu.degree;
+                            const eduNote = lang === 'en' ? edu.noteEn : edu.note;
+                            return (
+                                <div key={edu.degree} className="glass rounded-2xl p-5 border border-indigo-500/20 mb-3">
+                                    <p className="text-white font-bold mb-1">{eduDegree}</p>
+                                    <p className="text-indigo-300 text-sm mb-1">{edu.school}</p>
+                                    <p className="text-slate-500 text-xs">{edu.year}{eduNote ? ` · ${eduNote}` : ''}</p>
+                                </div>
+                            );
+                        })}
 
                         <div className="mt-4 glass rounded-2xl p-5">
                             <h4 className="text-white font-semibold mb-3 text-sm">🌐 {t.about.languagesTitle}</h4>
