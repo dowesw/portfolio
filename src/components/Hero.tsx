@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { profile } from '../data/portfolio';
 import { useLanguage } from '../i18n/LanguageContext';
 
@@ -19,6 +20,13 @@ const LinkedinIcon = () => (
 
 export default function Hero() {
     const { t } = useLanguage();
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 50);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
     return (
         <section id="hero" className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'radial-gradient(ellipse 80% 80% at 50% -20%, rgba(99,102,241,0.15) 0%, transparent 60%), #050b18' }}>
             {/* Animated blobs */}
@@ -123,7 +131,7 @@ export default function Hero() {
             </div>
 
             {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+            <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce transition-opacity duration-500 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                 <span className="text-slate-600 text-xs tracking-widest uppercase">Scroll</span>
                 <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
