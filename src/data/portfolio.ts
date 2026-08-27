@@ -6,6 +6,7 @@ export const profile = {
     email: "dowesw@gmail.com",
     phone: "+1 438 773 6086",
     github: "https://github.com/dowesw",
+    gitlab: "https://gitlab.com/dowesw",
     linkedin: "https://www.linkedin.com/in/dowes-mbella-a78720122/",
     malt: "https://www.malt.fr/profile/guillaumembellaebongue",
     avatar: "https://avatars.githubusercontent.com/u/6861482?v=4",
@@ -176,6 +177,14 @@ export const projects = [
         stack: ["React", "Spring Boot", "PostgreSQL", "Docker"],
         github: "",
         type: "Web",
+    },
+    {
+        name: "TourGuide",
+        description: "Application d'aide au voyage par géolocalisation. Propose des attractions touristiques à proximité, attribue des points de récompense et suggère des offres de voyage personnalisées.",
+        stack: ["Java 11", "Spring Boot", "Gradle", "Microservices", "Swagger", "GitLab CI"],
+        github: "",
+        gitlab: "https://gitlab.com/dowesw/projettourguide",
+        type: "API",
     },
 ];
 

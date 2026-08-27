@@ -56,11 +56,12 @@ export default function Contact() {
                 </div>
 
                 {/* Social network */}
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {[
                         { href: profile.github, label: 'GitHub', emoji: '🐙', sub: '@dowesw', color: 'hover:border-white/30 hover:text-white' },
+                        { href: profile.gitlab, label: 'GitLab', emoji: '🦊', sub: '@dowesw', color: 'hover:border-orange-500/40 hover:text-orange-400' },
                         { href: profile.linkedin, label: 'LinkedIn', emoji: '💼', sub: 'Profil LinkedIn', color: 'hover:border-blue-500/40 hover:text-blue-400' },
-                        { href: profile.malt, label: 'Malt', emoji: '🏆', sub: 'Profil Freelance', color: 'hover:border-orange-500/40 hover:text-orange-400' },
+                        { href: profile.malt, label: 'Malt', emoji: '🏆', sub: 'Profil Freelance', color: 'hover:border-amber-500/40 hover:text-amber-400' },
                     ].map((s) => (
                         <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                             className={`flex flex-col items-center text-center glass rounded-2xl p-4 border border-white/5 text-slate-400 transition-all hover:-translate-y-0.5 ${s.color}`}>

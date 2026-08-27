@@ -6,11 +6,18 @@ const GhIcon = () => (
     </svg>
 );
 
+const GlIcon = () => (
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M4.845.904a.9.9 0 00-.863.556L.083 10.77a.9.9 0 00.324 1.043l11.593 8.388a.9.9 0 001.072 0l11.593-8.388a.9.9 0 00.324-1.043L20.018 1.46a.9.9 0 00-.863-.556h-3.386l1.26 3.893h2.072l.822 2.513-7.923 5.737-7.923-5.737.822-2.513h2.072L8.231.904H4.845zm3.38 0L7.01 4.797H4.938L3.877.904h4.348zm7.55 0h4.348l-1.061 3.893H16.99L15.775.904z" />
+    </svg>
+);
+
 const typeBg: Record<string, { badge: string; glow: string }> = {
     Web: { badge: 'bg-blue-900/40 text-blue-300 border-blue-500/30', glow: 'group-hover:shadow-blue-500/10' },
     Desktop: { badge: 'bg-purple-900/40 text-purple-300 border-purple-500/30', glow: 'group-hover:shadow-purple-500/10' },
     Mobile: { badge: 'bg-emerald-900/40 text-emerald-300 border-emerald-500/30', glow: 'group-hover:shadow-emerald-500/10' },
     ERP: { badge: 'bg-amber-900/40 text-amber-300 border-amber-500/30', glow: 'group-hover:shadow-amber-500/10' },
+    API: { badge: 'bg-orange-900/40 text-orange-300 border-orange-500/30', glow: 'group-hover:shadow-orange-500/10' },
 };
 
 export default function Projects() {
@@ -48,17 +55,23 @@ export default function Projects() {
                                     ))}
                                 </div>
 
-                                <div className="flex gap-3 border-t border-white/5 pt-4">
+                                <div className="flex gap-3 flex-wrap border-t border-white/5 pt-4">
                                     {project.github ? (
                                         <a href={project.github} target="_blank" rel="noopener noreferrer"
                                             className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-xs font-medium">
-                                            <GhIcon />Code source
+                                            <GhIcon />GitHub
                                         </a>
-                                    ) : (
+                                    ) : !('gitlab' in project && project.gitlab) ? (
                                         <span className="flex items-center gap-1.5 text-slate-600 text-xs">
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                                             Privé
                                         </span>
+                                    ) : null}
+                                    {'gitlab' in project && project.gitlab && (
+                                        <a href={project.gitlab as string} target="_blank" rel="noopener noreferrer"
+                                            className="flex items-center gap-1.5 text-slate-400 hover:text-orange-400 transition-colors text-xs font-medium">
+                                            <GlIcon />GitLab
+                                        </a>
                                     )}
                                     {'githubBack' in project && project.githubBack && (
                                         <a href={project.githubBack as string} target="_blank" rel="noopener noreferrer"
@@ -72,11 +85,17 @@ export default function Projects() {
                     })}
                 </div>
 
-                <div className="text-center mt-12">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
                     <a href="https://github.com/dowesw?tab=repositories" target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 glass glass-hover border border-white/10 text-slate-300 hover:text-white px-7 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5">
+                        className="inline-flex items-center justify-center gap-2 glass glass-hover border border-white/10 text-slate-300 hover:text-white px-7 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5">
                         <GhIcon />
-                        Voir tous mes dépôts GitHub
+                        Dépôts GitHub
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                    <a href="https://gitlab.com/dowesw" target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 glass glass-hover border border-orange-500/20 text-slate-300 hover:text-orange-400 px-7 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5">
+                        <GlIcon />
+                        Dépôts GitLab
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                 </div>
