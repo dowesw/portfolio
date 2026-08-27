@@ -1,3 +1,4 @@
+import { LanguageProvider } from './i18n/LanguageContext'
 import About from './components/About'
 import BackToTop from './components/BackToTop'
 import Contact from './components/Contact'
@@ -12,20 +13,22 @@ import Testimonials from './components/Testimonials'
 
 export default function App() {
   return (
-    <div className="min-h-screen text-slate-100" style={{ background: '#050b18' }}>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-      <BackToTop />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen text-slate-100" style={{ background: '#050b18' }}>
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Services />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Testimonials />
+          <Contact />
+        </main>
+        <Footer />
+        <BackToTop />
+      </div>
+    </LanguageProvider>
   )
 }

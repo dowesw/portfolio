@@ -1,6 +1,8 @@
 import { profile } from '../data/portfolio';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function Footer() {
+    const { t } = useLanguage();
     const year = new Date().getFullYear();
     return (
         <footer className="py-10 border-t border-white/[0.04]" style={{ background: '#020609' }}>
@@ -12,7 +14,7 @@ export default function Footer() {
                     <span className="gradient-text text-sm font-bold">{profile.name}</span>
                 </div>
                 <p className="text-slate-600 text-xs text-center">
-                    &copy; {year} &middot; React + Vite + Tailwind CSS
+                    &copy; {year} &middot; {t.footer.madeWith}
                 </p>
                 <div className="flex gap-3">
                     <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors text-xs glass px-3 py-1.5 rounded-full">GitHub</a>

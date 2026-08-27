@@ -1,4 +1,5 @@
 import { skills } from '../data/portfolio';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const gradients = [
     'from-indigo-500/10 to-blue-500/10 border-indigo-500/20 group-hover:border-indigo-500/50',
@@ -16,12 +17,13 @@ const tagGrads = [
 ];
 
 export default function Skills() {
+    const { t } = useLanguage();
     return (
         <section id="skills" className="py-24 relative" style={{ background: 'linear-gradient(180deg,#0a0f1e 0%,#050b18 100%)' }}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-blue-400 glass border border-blue-500/20 mb-4">Compétences</span>
-                    <h2 className="text-4xl sm:text-5xl font-black gradient-text">Stack Technique</h2>
+                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-blue-400 glass border border-blue-500/20 mb-4">{t.skills.badge}</span>
+                    <h2 className="text-4xl sm:text-5xl font-black gradient-text">{t.skills.title}</h2>
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -32,7 +34,7 @@ export default function Skills() {
                             <div className="absolute top-0 left-6 right-6 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)' }} />
                             <div className="flex items-center gap-3 mb-5">
                                 <span className="text-2xl p-2 rounded-xl glass">{cat.icon}</span>
-                                <h3 className="text-white font-bold text-base">{cat.category}</h3>
+                                <h3 className="text-white font-bold text-base">{t.skills.categories[cat.category] ?? cat.category}</h3>
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 {cat.items.map((item) => (

@@ -1,17 +1,20 @@
 import { useState } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 import { profile } from '../data/portfolio';
-
-const links = [
-    { href: '#about', label: 'A propos' },
-    { href: '#services', label: 'Services' },
-    { href: '#skills', label: 'Competences' },
-    { href: '#experience', label: 'Experiences' },
-    { href: '#projects', label: 'Projets' },
-    { href: '#contact', label: 'Contact' },
-];
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const { lang, setLang, t } = useLanguage();
+
+    const links = [
+        { href: '#about', label: t.nav.about },
+        { href: '#services', label: t.nav.services },
+        { href: '#skills', label: t.nav.skills },
+        { href: '#experience', label: t.nav.experience },
+        { href: '#projects', label: t.nav.projects },
+        { href: '#contact', label: t.nav.contact },
+    ];
+
     return (
         <nav className="fixed top-0 inset-x-0 z-50 glass border-b border-white/[0.06]">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,18 +31,34 @@ export default function Navbar() {
                                 {link.label}
                             </a>
                         ))}
+                        <button
+                            onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
+                            className="ml-1 px-3 py-1.5 rounded-full glass border border-white/10 text-slate-400 hover:text-white hover:border-white/25 transition-all text-xs font-bold tracking-wider"
+                            aria-label="Switch language"
+                        >
+                            {lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR'}
+                        </button>
                         <a href={profile.malt} target="_blank" rel="noopener noreferrer"
                             className="ml-2 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-indigo-500/20">
-                            Disponible
+                            {t.nav.available}
                         </a>
                     </div>
-                    <button onClick={() => setOpen(!open)} className="md:hidden p-2 text-slate-400 hover:text-white" aria-label="Menu">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            {open
-                                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
-                        </svg>
-                    </button>
+                    <div className="flex items-center gap-2 md:hidden">
+                        <button
+                            onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
+                            className="px-2.5 py-1.5 rounded-full glass border border-white/10 text-slate-400 text-xs font-bold"
+                            aria-label="Switch language"
+                        >
+                            {lang === 'fr' ? '🇬🇧' : '🇫🇷'}
+                        </button>
+                        <button onClick={() => setOpen(!open)} className="p-2 text-slate-400 hover:text-white" aria-label="Menu">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                {open
+                                    ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                 {open && (
                     <div className="md:hidden pb-4 space-y-1 border-t border-white/[0.06] pt-3">
@@ -51,7 +70,7 @@ export default function Navbar() {
                         ))}
                         <a href={profile.malt} target="_blank" rel="noopener noreferrer"
                             className="block mx-4 mt-2 text-center bg-gradient-to-r from-indigo-600 to-blue-600 text-white py-2 rounded-full text-sm font-semibold">
-                            Disponible pour missions
+                            {t.nav.availableMobile}
                         </a>
                     </div>
                 )}

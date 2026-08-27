@@ -1,4 +1,5 @@
 import { projects } from '../data/portfolio';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const GhIcon = () => (
     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -21,12 +22,13 @@ const typeBg: Record<string, { badge: string; glow: string }> = {
 };
 
 export default function Projects() {
+    const { t } = useLanguage();
     return (
         <section id="projects" className="py-24 relative" style={{ background: 'linear-gradient(180deg,#0a0f1e 0%,#050b18 100%)' }}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-blue-400 glass border border-blue-500/20 mb-4">Projets</span>
-                    <h2 className="text-4xl sm:text-5xl font-black gradient-text">Réalisations</h2>
+                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-blue-400 glass border border-blue-500/20 mb-4">{t.projects.badge}</span>
+                    <h2 className="text-4xl sm:text-5xl font-black gradient-text">{t.projects.title}</h2>
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -45,7 +47,7 @@ export default function Projects() {
                                     </span>
                                 </div>
 
-                                <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">{project.description}</p>
+                                <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">{t.projects.descriptions[project.name] ?? project.description}</p>
 
                                 <div className="flex flex-wrap gap-1.5 mb-5">
                                     {project.stack.map((tech) => (
@@ -64,7 +66,7 @@ export default function Projects() {
                                     ) : !('gitlab' in project && project.gitlab) ? (
                                         <span className="flex items-center gap-1.5 text-slate-600 text-xs">
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-                                            Privé
+                                            {t.projects.privateLabel}
                                         </span>
                                     ) : null}
                                     {'gitlab' in project && project.gitlab && (
@@ -89,13 +91,13 @@ export default function Projects() {
                     <a href="https://github.com/dowesw?tab=repositories" target="_blank" rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 glass glass-hover border border-white/10 text-slate-300 hover:text-white px-7 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5">
                         <GhIcon />
-                        Dépôts GitHub
+                        {t.projects.githubAll}
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                     <a href="https://gitlab.com/dowesw" target="_blank" rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 glass glass-hover border border-orange-500/20 text-slate-300 hover:text-orange-400 px-7 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5">
                         <GlIcon />
-                        Dépôts GitLab
+                        {t.projects.gitlabAll}
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                 </div>

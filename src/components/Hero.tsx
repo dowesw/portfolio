@@ -1,4 +1,5 @@
 import { profile } from '../data/portfolio';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const GithubIcon = () => (
     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -12,6 +13,7 @@ const LinkedinIcon = () => (
 );
 
 export default function Hero() {
+    const { t } = useLanguage();
     return (
         <section id="hero" className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'radial-gradient(ellipse 80% 80% at 50% -20%, rgba(99,102,241,0.15) 0%, transparent 60%), #050b18' }}>
             {/* Animated blobs */}
@@ -30,7 +32,7 @@ export default function Hero() {
                         {/* Badge */}
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-indigo-500/20 text-sm text-indigo-300 mb-8">
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            Disponible · 🇨🇦 {profile.location}
+                            {t.hero.available} · 🇨🇦 {profile.location}
                         </div>
 
                         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-4 leading-none tracking-tight">
@@ -40,10 +42,10 @@ export default function Hero() {
                         </h1>
 
                         <p className="text-xl sm:text-2xl font-semibold mb-2" style={{ background: 'linear-gradient(90deg,#a5b4fc,#60a5fa,#c084fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            {profile.title}
+                            {t.hero.title}
                         </p>
                         <p className="text-slate-400 text-base sm:text-lg mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                            {profile.subtitle}
+                            {t.hero.subtitle}
                         </p>
 
                         {/* CTAs */}
@@ -51,17 +53,17 @@ export default function Hero() {
                             <a href="#contact"
                                 className="relative px-8 py-3.5 rounded-full font-bold text-white overflow-hidden group transition-all hover:-translate-y-1"
                                 style={{ background: 'linear-gradient(135deg, #6366f1, #3b82f6)' }}>
-                                <span className="relative z-10">Me contacter</span>
+                                <span className="relative z-10">{t.hero.contactBtn}</span>
                                 <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'linear-gradient(135deg,#4f46e5,#2563eb)' }} />
                             </a>
                             <a href="#projects"
                                 className="px-8 py-3.5 rounded-full font-bold text-slate-300 hover:text-white glass glass-hover transition-all hover:-translate-y-1">
-                                Voir mes projets →
+                                {t.hero.projectsBtn}
                             </a>
                             <a href={profile.linkedin} target="_blank" rel="noopener noreferrer"
                                 className="flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-slate-400 hover:text-white border border-white/10 hover:border-white/30 transition-all hover:-translate-y-1">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                                Télécharger CV
+                                {t.hero.downloadCV}
                             </a>
                         </div>
 
@@ -100,12 +102,12 @@ export default function Hero() {
                             {/* Badge CGI */}
                             <div className="absolute -bottom-3 -right-3 glass border border-white/10 rounded-2xl px-4 py-2.5 text-sm shadow-xl">
                                 <p className="text-white font-bold">CGI</p>
-                                <p className="text-slate-400 text-xs">Conseiller .NET</p>
+                                <p className="text-slate-400 text-xs">{t.hero.cgiRole}</p>
                             </div>
                             {/* Badge XP */}
                             <div className="absolute -top-3 -left-3 glass border border-indigo-500/30 rounded-2xl px-4 py-2.5 text-sm shadow-xl">
                                 <p className="gradient-text font-black text-2xl leading-none">10+</p>
-                                <p className="text-slate-400 text-xs">ans d'expérience</p>
+                                <p className="text-slate-400 text-xs">{t.hero.yearsExp}</p>
                             </div>
                         </div>
                     </div>

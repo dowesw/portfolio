@@ -1,4 +1,5 @@
 import { experiences } from '../data/portfolio';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const typeBadge: Record<string, string> = {
     CDI: 'bg-emerald-900/40 text-emerald-300 border border-emerald-500/30',
@@ -6,6 +7,7 @@ const typeBadge: Record<string, string> = {
 };
 
 export default function Experience() {
+    const { t } = useLanguage();
     return (
         <section id="experience" className="py-24 relative" style={{ background: 'linear-gradient(180deg,#050b18 0%,#0a0f1e 50%,#050b18 100%)' }}>
             {/* Side gradient accent */}
@@ -13,8 +15,8 @@ export default function Experience() {
 
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-purple-400 glass border border-purple-500/20 mb-4">Expériences</span>
-                    <h2 className="text-4xl sm:text-5xl font-black gradient-text">Parcours Professionnel</h2>
+                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-purple-400 glass border border-purple-500/20 mb-4">{t.experience.badge}</span>
+                    <h2 className="text-4xl sm:text-5xl font-black gradient-text">{t.experience.title}</h2>
                 </div>
 
                 <div className="relative">
@@ -39,7 +41,7 @@ export default function Experience() {
                                         </div>
                                         <div className="flex items-center gap-2 flex-wrap">
                                             <span className={`px-3 py-1 rounded-full text-xs font-bold ${typeBadge[exp.type] ?? 'bg-slate-700/50 text-slate-300 border border-slate-600/50'}`}>
-                                                {exp.type}
+                                                {t.experience.types[exp.type] ?? exp.type}
                                             </span>
                                         </div>
                                     </div>
@@ -58,7 +60,7 @@ export default function Experience() {
 
                                     {/* Tasks */}
                                     <ul className="space-y-1.5 mb-5">
-                                        {exp.description.map((desc, j) => (
+                                        {(t.experience.descriptions[exp.company] ?? exp.description).map((desc, j) => (
                                             <li key={j} className="flex gap-2 text-slate-400 text-sm">
                                                 <span className="text-indigo-500 flex-shrink-0 mt-0.5">▸</span>
                                                 {desc}
