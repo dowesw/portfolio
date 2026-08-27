@@ -5,17 +5,132 @@ html {
 }
 
 body {
-  background-color: #0f172a;
+  background-color: #050b18;
   color: #e2e8f0;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #0f172a;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
+  background: linear-gradient(#6366f1, #3b82f6);
   border-radius: 3px;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradient-x {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 60px rgba(99, 102, 241, 0.8), 0 0 100px rgba(59, 130, 246, 0.4);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 4s ease infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-hover:hover {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.avatar-ring {
+  background: linear-gradient(135deg, #6366f1, #3b82f6, #a855f7, #6366f1);
+  background-size: 300% 300%;
+  animation: gradient-x 3s ease infinite;
+  padding: 3px;
+  border-radius: 9999px;
 }

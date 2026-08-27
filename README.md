@@ -1,32 +1,36 @@
-# React + TypeScript + Vite
+# Portfolio – Guillaume Mbella Ebongue
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portfolio personnel développé avec **React + Vite + TypeScript + Tailwind CSS v4**.
 
-Currently, two official plugins are available:
+## Déploiement sur GitHub Pages (automatique)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Pusher le code sur votre dépôt GitHub :
+   `ash
+   git remote add origin https://github.com/dowesw/portfolio.git
+   git push -u origin main
+   `
+2. Dans les **Settings** du dépôt ? **Pages** ? Source : **GitHub Actions**
+3. Le workflow \.github/workflows/deploy.yml\ se déclenche à chaque push sur \main\.
 
-## React Compiler
+> URL du portfolio : \https://dowesw.github.io/portfolio/\
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Développement local
 
-## Expanding the Oxlint configuration
+\\\ash
+npm install
+npm run dev
+\\\
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Build
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+\\\ash
+npm run build
+npm run preview
+\\\
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Stack
+
+- React 19 + TypeScript
+- Vite 5
+- Tailwind CSS v4
+- GitHub Actions CI/CD
