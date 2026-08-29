@@ -89,11 +89,11 @@ export default function Hero() {
 
                     {/* Right – Photo */}
                     <div className="flex-shrink-0 flex justify-center lg:justify-end order-first lg:order-last">
-                        <div className="avatar-ring">
+                        <div className="avatar-ring w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72">
                             <img
                                 src={profile.avatar}
                                 alt={profile.name}
-                                className="w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover"
+                                className="w-full h-full rounded-full object-cover"
                             />
                         </div>
                     </div>
