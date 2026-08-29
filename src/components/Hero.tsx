@@ -14,7 +14,7 @@ const GitlabIcon = () => (
 );
 const LinkedinIcon = () => (
     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 24 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
 );
 
@@ -27,71 +27,61 @@ export default function Hero() {
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
     return (
-        <section id="hero" className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'radial-gradient(ellipse 80% 80% at 50% -20%, rgba(99,102,241,0.15) 0%, transparent 60%), #050b18' }}>
-            {/* Animated blobs */}
-            <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-600/10 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }} />
-            <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-purple-600/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '1.5s' }} />
+        <section id="hero" className="relative min-h-screen flex items-center" style={{ background: '#050b18' }}>
+            <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)', backgroundSize: '50px 50px' }} />
 
-            {/* Grid overlay */}
-            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
-
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-24 sm:py-24 sm:pt-32">
-                <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-16">
+            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
                     {/* Left – Text */}
                     <div className="flex-1 text-center lg:text-left">
                         {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-indigo-500/20 text-sm text-indigo-300 mb-8">
-                            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            {t.hero.available} · 🇨🇦 {profile.location}
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium text-slate-300 mb-6 sm:mb-8 bg-white/5">
+                            <span className="w-2 h-2 rounded-full bg-green-400" />
+                            <span className="hidden sm:inline">{t.hero.available} · 🇨🇦 {profile.location}</span>
+                            <span className="sm:hidden">Disponible</span>
                         </div>
 
-                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-4 leading-none tracking-tight">
-                            <span className="gradient-text">{profile.name.split(' ')[0]}</span>
+                        {/* Heading */}
+                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                            <span className="gradient-text">{profile.name}</span>
                             <br />
-                            <span className="text-white/90 text-3xl sm:text-4xl lg:text-6xl font-bold">{profile.name.split(' ').slice(1).join(' ')}</span>
+                            <span className="text-white text-4xl">Développeur Full-Stack</span>
                         </h1>
 
-                        <p className="text-xl sm:text-2xl font-semibold mb-2" style={{ background: 'linear-gradient(90deg,#a5b4fc,#60a5fa,#c084fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            {t.hero.title}
-                        </p>
-                        <p className="text-slate-400 text-base sm:text-lg mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                            {t.hero.subtitle}
+                        {/* Description */}
+                        <p className="text-slate-300 text-base sm:text-lg mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Je crée des solutions web robustes et scalables qui transforment les idées en produits réussis.
                         </p>
 
                         {/* CTAs */}
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
                             <a href="#contact"
-                                className="relative px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold text-white overflow-hidden group transition-all hover:-translate-y-1"
-                                style={{ background: 'linear-gradient(135deg, #6366f1, #3b82f6)' }}>
-                                <span className="relative z-10">{t.hero.contactBtn}</span>
-                                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: 'linear-gradient(135deg,#4f46e5,#2563eb)' }} />
+                                className="btn-premium btn-gradient text-white px-7 py-3 rounded-lg font-semibold text-sm sm:text-base"
+                                aria-label="Aller à la section contact">
+                                {t.hero.contactBtn}
                             </a>
                             <a href="#projects"
-                                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold text-slate-300 hover:text-white glass glass-hover transition-all hover:-translate-y-1">
+                                className="px-7 py-3 rounded-lg font-semibold text-sm sm:text-base text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 transition-colors"
+                                aria-label="Voir mes projets">
                                 {t.hero.projectsBtn}
-                            </a>
-                            <a href={`${import.meta.env.BASE_URL}cv.pdf`} download="Guillaume_Mbella_CV.pdf"
-                                className="flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold text-slate-400 hover:text-white border border-white/10 hover:border-white/30 transition-all hover:-translate-y-1">
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                                {t.hero.downloadCV}
                             </a>
                         </div>
 
                         {/* Social */}
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-2 sm:gap-3">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-3">
                             {[
-                                { href: profile.github, icon: <GithubIcon />, label: 'GitHub', color: 'hover:text-white hover:border-white/30' },
-                                { href: profile.gitlab, icon: <GitlabIcon />, label: 'GitLab', color: 'hover:text-orange-400 hover:border-orange-400/30' },
-                                { href: profile.linkedin, icon: <LinkedinIcon />, label: 'LinkedIn', color: 'hover:text-blue-400 hover:border-blue-400/30' },
-                                { href: profile.malt, icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0L1.5 6v12L12 24l10.5-6V6L12 0zm0 2.4l8.1 4.65v9.9L12 21.6l-8.1-4.65V7.05L12 2.4z" /></svg>, label: 'Malt', color: 'hover:text-red-400 hover:border-red-400/30' },
+                                { href: profile.github, icon: <GithubIcon />, label: 'GitHub', ariaLabel: 'Voir mon profil GitHub' },
+                                { href: profile.gitlab, icon: <GitlabIcon />, label: 'GitLab', ariaLabel: 'Voir mon profil GitLab' },
+                                { href: profile.linkedin, icon: <LinkedinIcon />, label: 'LinkedIn', ariaLabel: 'Connecté sur LinkedIn' },
                             ].map(s => (
                                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                                    className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-full border border-white/10 text-slate-400 text-sm font-medium transition-all ${s.color}`}>
+                                    className="p-3 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+                                    aria-label={s.ariaLabel}
+                                    title={s.label}>
                                     {s.icon}
-                                    <span className="hidden sm:inline">{s.label}</span>
                                 </a>
                             ))}
                         </div>
@@ -99,43 +89,41 @@ export default function Hero() {
 
                     {/* Right – Photo */}
                     <div className="flex-shrink-0 flex justify-center lg:justify-end order-first lg:order-last">
-                        <div className="relative">
-                            {/* Outer spinning ring */}
-                            <div className="absolute -inset-4 rounded-full animate-spin-slow opacity-60"
-                                style={{ background: 'conic-gradient(from 0deg, #6366f1, #3b82f6, #a855f7, #f472b6, #6366f1)', mask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), white calc(100% - 2px))' }} />
-                            {/* Middle glow */}
-                            <div className="absolute -inset-2 rounded-full animate-glow opacity-50"
-                                style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.4) 0%, transparent 70%)' }} />
-                            {/* Avatar */}
-                            <div className="avatar-ring relative">
-                                <img
-                                    src={profile.avatar}
-                                    alt={profile.name}
-                                    className="w-44 h-44 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-full object-cover"
-                                />
-                            </div>
-                            {/* Badge CGI */}
-                            <div className="absolute -bottom-4 -right-2 sm:-bottom-3 sm:-right-3 glass border border-white/10 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl">
-                                <p className="text-white font-bold text-xs sm:text-sm">CGI</p>
-                                <p className="text-slate-400 text-[10px] sm:text-xs">{t.hero.cgiRole}</p>
-                            </div>
-                            {/* Badge XP */}
-                            <div className="absolute -top-4 -left-2 sm:-top-3 sm:-left-3 glass border border-indigo-500/30 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 shadow-xl">
-                                <p className="gradient-text font-black text-xl sm:text-2xl leading-none">10+</p>
-                                <p className="text-slate-400 text-[10px] sm:text-xs">{t.hero.yearsExp}</p>
-                            </div>
+                        <div className="avatar-ring">
+                            <img
+                                src={profile.avatar}
+                                alt={profile.name}
+                                className="w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full object-cover"
+                            />
                         </div>
                     </div>
 
                 </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-8 sm:gap-12 mt-16 sm:mt-20 pt-16 sm:pt-20">
+                    <div>
+                        <div className="text-2xl sm:text-3xl font-black text-white">10+</div>
+                        <p className="text-slate-400 text-sm mt-2">Ans d'expérience</p>
+                    </div>
+                    <div>
+                        <div className="text-2xl sm:text-3xl font-black text-white">50+</div>
+                        <p className="text-slate-400 text-sm mt-2">Projets réalisés</p>
+                    </div>
+                    <div>
+                        <div className="text-2xl sm:text-3xl font-black text-white">99%</div>
+                        <p className="text-slate-400 text-sm mt-2">Satisfaction</p>
+                    </div>
+                </div>
             </div>
 
             {/* Scroll indicator */}
-            <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce transition-opacity duration-500 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                <span className="text-slate-600 text-xs tracking-widest uppercase">Scroll</span>
-                <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+            <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-500 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                <div className="animate-bounce">
+                    <svg className="w-5 h-5 text-slate-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </div>
             </div>
         </section>
     );

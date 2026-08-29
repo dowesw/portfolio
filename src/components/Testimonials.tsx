@@ -51,10 +51,10 @@ export default function Testimonials() {
 
             <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-amber-400 glass border border-amber-500/20 mb-4">Témoignages</span>
-                    <h2 className="text-4xl sm:text-5xl font-black gradient-text mb-4">Ils me font confiance</h2>
-                    <p className="text-slate-400 max-w-xl mx-auto">
+                <div className="text-center mb-20">
+                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-amber-400 glass mb-4">Témoignages</span>
+                    <h2 className="text-4xl sm:text-5xl font-black gradient-text mb-6">Ils me font confiance</h2>
+                    <p className="text-slate-300 max-w-2xl mx-auto text-lg">
                         Références de clients et partenaires avec lesquels j'ai travaillé sur des projets concrets.
                     </p>
                 </div>
@@ -63,23 +63,21 @@ export default function Testimonials() {
                 <div className="grid sm:grid-cols-2 gap-6">
                     {testimonials.map((t) => (
                         <div key={t.name}
-                            className="group glass rounded-2xl p-7 border border-white/5 hover:border-white/10 transition-all hover:-translate-y-1 relative overflow-hidden">
-                            {/* Background quote */}
-                            <span className="absolute top-4 right-6 text-8xl font-serif text-white/[0.03] leading-none select-none">"</span>
+                            className="bg-white/3 rounded-xl p-8 hover:bg-white/5 transition-colors relative">
 
                             <Stars />
 
-                            <blockquote className="text-slate-300 text-sm leading-relaxed mb-6 relative z-10">
+                            <blockquote className="text-slate-300 text-sm leading-relaxed mb-6">
                                 "{t.text}"
                             </blockquote>
 
-                            <div className="flex items-center gap-3">
-                                <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                            <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                                <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`} aria-label={t.name}>
                                     {t.avatar}
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm">{t.name}</p>
-                                    <p className="text-slate-500 text-xs">{t.role} · {t.company}</p>
+                                    <p className="text-slate-400 text-xs">{t.role} · {t.company}</p>
                                 </div>
                             </div>
                         </div>

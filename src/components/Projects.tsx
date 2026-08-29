@@ -14,11 +14,11 @@ const GlIcon = () => (
 );
 
 const typeBg: Record<string, { badge: string; glow: string }> = {
-    Web: { badge: 'bg-blue-900/40 text-blue-300 border-blue-500/30', glow: 'group-hover:shadow-blue-500/10' },
-    Desktop: { badge: 'bg-purple-900/40 text-purple-300 border-purple-500/30', glow: 'group-hover:shadow-purple-500/10' },
-    Mobile: { badge: 'bg-emerald-900/40 text-emerald-300 border-emerald-500/30', glow: 'group-hover:shadow-emerald-500/10' },
-    ERP: { badge: 'bg-amber-900/40 text-amber-300 border-amber-500/30', glow: 'group-hover:shadow-amber-500/10' },
-    API: { badge: 'bg-orange-900/40 text-orange-300 border-orange-500/30', glow: 'group-hover:shadow-orange-500/10' },
+    Web: { badge: 'bg-blue-900/40 text-blue-300', glow: 'group-hover:shadow-blue-500/10' },
+    Desktop: { badge: 'bg-purple-900/40 text-purple-300', glow: 'group-hover:shadow-purple-500/10' },
+    Mobile: { badge: 'bg-emerald-900/40 text-emerald-300', glow: 'group-hover:shadow-emerald-500/10' },
+    ERP: { badge: 'bg-amber-900/40 text-amber-300', glow: 'group-hover:shadow-amber-500/10' },
+    API: { badge: 'bg-orange-900/40 text-orange-300', glow: 'group-hover:shadow-orange-500/10' },
 };
 
 export default function Projects() {
@@ -26,58 +26,60 @@ export default function Projects() {
     return (
         <section id="projects" className="py-24 relative" style={{ background: 'linear-gradient(180deg,#0a0f1e 0%,#050b18 100%)' }}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-blue-400 glass border border-blue-500/20 mb-4">{t.projects.badge}</span>
-                    <h2 className="text-4xl sm:text-5xl font-black gradient-text">{t.projects.title}</h2>
+                <div className="text-center mb-20">
+                    <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-blue-400 glass mb-4">{t.projects.badge}</span>
+                    <h2 className="text-4xl sm:text-5xl font-black gradient-text mb-6">{t.projects.title}</h2>
+                    <p className="text-slate-300 max-w-2xl mx-auto text-lg">Projets sélectionnés qui démontrent mon expertise en création de solutions robustes</p>
                 </div>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project) => {
-                        const style = typeBg[project.type] ?? { badge: 'bg-slate-700/50 text-slate-300 border-slate-600/30', glow: '' };
+                        const style = typeBg[project.type] ?? { badge: 'bg-slate-700/50 text-slate-300' };
                         return (
                             <div key={project.name}
-                                className={`group relative glass rounded-2xl p-6 flex flex-col border border-white/5 hover:border-indigo-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${style.glow}`}>
-                                {/* Top gradient line */}
-                                <div className="absolute top-0 inset-x-0 h-px rounded-t-2xl" style={{ background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)' }} />
+                                className="relative bg-white/3 rounded-xl p-6 hover:bg-white/5 transition-colors group flex flex-col">
 
-                                <div className="flex items-start justify-between mb-3">
-                                    <h3 className="text-white font-bold text-base leading-tight">{project.name}</h3>
-                                    <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border flex-shrink-0 ml-2 ${style.badge}`}>
+                                <div className="flex items-start justify-between mb-4">
+                                    <h3 className="text-white font-bold text-lg leading-tight">{project.name}</h3>
+                                    <span className={`px-3 py-1 rounded-full text-xs font-bold flex-shrink-0 ml-2 ${style.badge}`}>
                                         {project.type}
                                     </span>
                                 </div>
 
                                 <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">{t.projects.descriptions[project.name] ?? project.description}</p>
 
-                                <div className="flex flex-wrap gap-1.5 mb-5">
+                                <div className="flex flex-wrap gap-2 mb-5">
                                     {project.stack.map((tech) => (
-                                        <span key={tech} className="px-2.5 py-0.5 bg-white/5 text-slate-300 rounded-full text-xs font-medium hover:bg-indigo-900/30 hover:text-indigo-300 transition-colors cursor-default">
+                                        <span key={tech} className="px-2.5 py-1 bg-white/5 text-slate-400 rounded-md text-xs font-medium">
                                             {tech}
                                         </span>
                                     ))}
                                 </div>
 
-                                <div className="flex gap-3 flex-wrap border-t border-white/5 pt-4">
+                                <div className="flex gap-4 flex-wrap pt-4">
                                     {project.github ? (
                                         <a href={project.github} target="_blank" rel="noopener noreferrer"
-                                            className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-xs font-medium">
+                                            className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-xs font-medium"
+                                            aria-label={`Voir le code GitHub du projet ${project.name}`}>
                                             <GhIcon />GitHub
                                         </a>
                                     ) : !('gitlab' in project && project.gitlab) ? (
-                                        <span className="flex items-center gap-1.5 text-slate-600 text-xs">
+                                        <span className="flex items-center gap-1.5 text-slate-500 text-xs">
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                                             {t.projects.privateLabel}
                                         </span>
                                     ) : null}
                                     {'gitlab' in project && project.gitlab && (
                                         <a href={project.gitlab as string} target="_blank" rel="noopener noreferrer"
-                                            className="flex items-center gap-1.5 text-slate-400 hover:text-orange-400 transition-colors text-xs font-medium">
+                                            className="flex items-center gap-1.5 text-slate-400 hover:text-orange-400 transition-colors text-xs font-medium"
+                                            aria-label={`Voir le code GitLab du projet ${project.name}`}>
                                             <GlIcon />GitLab
                                         </a>
                                     )}
                                     {'githubBack' in project && project.githubBack && (
                                         <a href={project.githubBack as string} target="_blank" rel="noopener noreferrer"
-                                            className="flex items-center gap-1.5 text-slate-500 hover:text-white transition-colors text-xs font-medium">
+                                            className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-xs font-medium"
+                                            aria-label={`Voir le backend du projet ${project.name}`}>
                                             <GhIcon />Backend
                                         </a>
                                     )}
@@ -87,17 +89,21 @@ export default function Projects() {
                     })}
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-12">
                     <a href="https://github.com/dowesw?tab=repositories" target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 glass glass-hover border border-white/10 text-slate-300 hover:text-white px-7 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5">
+                        className="btn-premium glass glass-hover text-slate-300 hover:text-white px-6 sm:px-7 py-3 rounded-full font-semibold text-sm sm:text-base inline-flex items-center justify-center gap-2"
+                        aria-label="Voir tous mes projets GitHub">
                         <GhIcon />
-                        {t.projects.githubAll}
+                        <span className="hidden sm:inline">{t.projects.githubAll}</span>
+                        <span className="sm:hidden">GitHub</span>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                     <a href="https://gitlab.com/dowesw" target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 glass glass-hover border border-orange-500/20 text-slate-300 hover:text-orange-400 px-7 py-3 rounded-full font-semibold transition-all hover:-translate-y-0.5">
+                        className="btn-premium glass glass-hover text-slate-300 hover:text-orange-400 px-6 sm:px-7 py-3 rounded-full font-semibold text-sm sm:text-base inline-flex items-center justify-center gap-2"
+                        aria-label="Voir tous mes projets GitLab">
                         <GlIcon />
-                        {t.projects.gitlabAll}
+                        <span className="hidden sm:inline">{t.projects.gitlabAll}</span>
+                        <span className="sm:hidden">GitLab</span>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                 </div>

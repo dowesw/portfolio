@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { profile } from '../data/portfolio';
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('hero');
     const { lang, setLang, t } = useLanguage();
 
     const links = [
@@ -15,43 +16,86 @@ export default function Navbar() {
         { href: '#contact', label: t.nav.contact },
     ];
 
+    // IntersectionObserver pour détecter la section active
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        const sections = document.querySelectorAll('section[id]');
+        sections.forEach((section) => observer.observe(section));
+
+        return () => {
+            sections.forEach((section) => observer.unobserve(section));
+        };
+    }, []);
+
     return (
-        <nav className="fixed top-0 inset-x-0 z-50 glass border-b border-white/[0.06]">
+        <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-sm" style={{ background: 'rgba(5, 11, 24, 0.7)' }}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    <a href="#hero" className="flex items-center gap-2.5">
-                        <div className="avatar-ring w-9 h-9">
-                            <img src="/portfolio/avatar.jpg" alt="" className="w-full h-full rounded-full object-cover" />
+                    {/* Logo */}
+                    <a href="#hero" className="flex items-center gap-3 rounded-lg hover:opacity-80 transition-opacity" aria-label="Accueil">
+                        <div className="avatar-ring w-8 h-8">
+                            <img src="/portfolio/avatar.jpg" alt={profile.name} className="w-full h-full rounded-full object-cover" loading="lazy" />
                         </div>
-                        <span className="gradient-text font-bold text-sm">{profile.name.split(' ')[0]} <span className="text-white/70">{profile.name.split(' ').slice(1).join(' ')}</span></span>
+                        <span className="gradient-text font-bold text-sm">{profile.name}</span>
                     </a>
-                    <div className="hidden md:flex items-center gap-1">
-                        {links.map((link) => (
-                            <a key={link.href} href={link.href} className="px-4 py-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-all text-sm font-medium">
-                                {link.label}
-                            </a>
-                        ))}
+
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center gap-8">
+                        {links.map((link) => {
+                            const sectionId = link.href.substring(1);
+                            const isActive = activeSection === sectionId;
+                            return (
+                                <a
+                                    key={link.href}
+                                    href={link.href}
+                                    className={`text-sm font-medium transition-colors duration-200 ${isActive
+                                            ? 'text-white'
+                                            : 'text-slate-400 hover:text-white'
+                                        }`}
+                                    aria-current={isActive ? 'page' : undefined}
+                                >
+                                    {link.label}
+                                </a>
+                            );
+                        })}
+                    </div>
+
+                    {/* Right Actions */}
+                    <div className="flex items-center gap-4">
                         <button
                             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-                            className="ml-1 px-3 py-1.5 rounded-full glass border border-white/10 text-slate-400 hover:text-white hover:border-white/25 transition-all text-xs font-bold tracking-wider"
-                            aria-label="Switch language"
+                            className="text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200"
+                            aria-label={lang === 'fr' ? 'Basculer vers l\'anglais' : 'Switch to French'}
+                            title={lang === 'fr' ? 'English' : 'Français'}
                         >
-                            {lang === 'fr' ? '🇬🇧 EN' : '🇫🇷 FR'}
+                            {lang === 'fr' ? 'EN' : 'FR'}
                         </button>
+
                         <a href={profile.malt} target="_blank" rel="noopener noreferrer"
-                            className="ml-2 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white px-4 py-1.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-indigo-500/20">
+                            className="hidden sm:inline-block btn-premium btn-gradient text-white px-5 py-2 rounded-lg text-sm font-semibold"
+                            aria-label="Disponible - Consulter sur Malt">
                             {t.nav.available}
                         </a>
-                    </div>
-                    <div className="flex items-center gap-2 md:hidden">
+
                         <button
-                            onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
-                            className="px-2.5 py-1.5 rounded-full glass border border-white/10 text-slate-400 text-xs font-bold"
-                            aria-label="Switch language"
+                            onClick={() => setOpen(!open)}
+                            className="md:hidden p-2 text-slate-400 hover:text-white focus-ring rounded-lg transition-colors"
+                            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+                            aria-expanded={open}
                         >
-                            {lang === 'fr' ? '🇬🇧' : '🇫🇷'}
-                        </button>
-                        <button onClick={() => setOpen(!open)} className="p-2 text-slate-400 hover:text-white" aria-label="Menu">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 {open
                                     ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -60,16 +104,31 @@ export default function Navbar() {
                         </button>
                     </div>
                 </div>
+
+                {/* Mobile Menu */}
                 {open && (
-                    <div className="md:hidden pb-4 space-y-1 border-t border-white/[0.06] pt-3">
-                        {links.map((link) => (
-                            <a key={link.href} href={link.href} onClick={() => setOpen(false)}
-                                className="block px-4 py-2.5 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg text-sm">
-                                {link.label}
-                            </a>
-                        ))}
+                    <div className="md:hidden pb-4 space-y-2 animate-slide-in-down">
+                        {links.map((link) => {
+                            const sectionId = link.href.substring(1);
+                            const isActive = activeSection === sectionId;
+                            return (
+                                <a
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setOpen(false)}
+                                    className={`block px-4 py-2.5 text-sm font-medium transition-colors ${isActive
+                                            ? 'text-white'
+                                            : 'text-slate-400 hover:text-white'
+                                        }`}
+                                    aria-current={isActive ? 'page' : undefined}
+                                >
+                                    {link.label}
+                                </a>
+                            );
+                        })}
                         <a href={profile.malt} target="_blank" rel="noopener noreferrer"
-                            className="block mx-4 mt-2 text-center bg-gradient-to-r from-indigo-600 to-blue-600 text-white py-2 rounded-full text-sm font-semibold">
+                            className="block text-center btn-premium btn-gradient text-white py-2 rounded-lg text-sm font-semibold mt-3"
+                            aria-label="Disponible - Consulter sur Malt">
                             {t.nav.availableMobile}
                         </a>
                     </div>
