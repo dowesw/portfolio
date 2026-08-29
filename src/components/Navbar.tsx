@@ -92,7 +92,7 @@ export default function Navbar() {
 
                         <button
                             onClick={() => setOpen(!open)}
-                            className="md:hidden p-2 text-slate-400 hover:text-white focus-ring rounded-lg transition-colors"
+                            className="md:hidden p-2 text-slate-400 hover:text-white rounded-lg transition-colors"
                             aria-label={open ? t.nav.menuCloseAriaLabel : t.nav.menuOpenAriaLabel}
                             aria-expanded={open}
                         >

@@ -102,17 +102,17 @@ export default function Hero() {
 
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-8 sm:gap-12 mt-16 sm:mt-20 pt-16 sm:pt-20 accent-line border-t border-white/5">
-                    <div>
-                        <div className="text-4xl sm:text-5xl font-black stat-gradient-1 mb-2">10+</div>
-                        <p className="text-slate-400 text-sm font-medium">{t.hero.statsYearsLabel}</p>
+                    <div className="text-center">
+                        <div className="text-4xl sm:text-5xl font-black stat-gradient-1 mb-3">10+</div>
+                        <p className="text-slate-300 text-sm sm:text-base font-semibold">{t.hero.statsYearsLabel}</p>
                     </div>
-                    <div>
-                        <div className="text-4xl sm:text-5xl font-black stat-gradient-2 mb-2">50+</div>
-                        <p className="text-slate-400 text-sm font-medium">{t.hero.statsProjectsLabel}</p>
+                    <div className="text-center">
+                        <div className="text-4xl sm:text-5xl font-black stat-gradient-2 mb-3">50+</div>
+                        <p className="text-slate-300 text-sm sm:text-base font-semibold">{t.hero.statsProjectsLabel}</p>
                     </div>
-                    <div>
-                        <div className="text-4xl sm:text-5xl font-black stat-gradient-3 mb-2">99%</div>
-                        <p className="text-slate-400 text-sm font-medium">{t.hero.statsSatisfactionLabel}</p>
+                    <div className="text-center">
+                        <div className="text-4xl sm:text-5xl font-black stat-gradient-3 mb-3">99%</div>
+                        <p className="text-slate-300 text-sm sm:text-base font-semibold">{t.hero.statsSatisfactionLabel}</p>
                     </div>
                 </div>
             </div>
