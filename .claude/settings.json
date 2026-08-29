@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(grep -v \"^\\\\s*$\")"
+      "Bash(grep -v \"^\\\\s*$\")",
+      "Bash(base64 -w 0 d:/Projets/Portfolio/public/avatar.jpg)",
+      "Read(//tmp/**)"
     ]
   }
 }
