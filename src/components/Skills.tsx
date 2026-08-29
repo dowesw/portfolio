@@ -15,7 +15,7 @@ export default function Skills() {
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {skills.map((cat) => (
                         <div key={cat.category}
-                            className="relative bg-white/3 rounded-xl p-6 hover:bg-white/5 transition-colors">
+                            className="relative bg-gradient-to-br from-white/3 to-white/5 border border-white/5 hover:border-white/10 rounded-xl p-6 hover:bg-white/7 transition-all duration-300">
                             <div className="flex items-center gap-3 mb-5">
                                 <span className="text-2xl">{cat.icon}</span>
                                 <h3 className="text-white font-bold text-base">{t.skills.categories[cat.category] ?? cat.category}</h3>

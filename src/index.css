@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 :root {
   /* Couleurs principales */
@@ -35,7 +36,9 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.3px;
 }
 
 ::-webkit-scrollbar {
@@ -378,6 +381,56 @@ body {
 
   .menu-item:hover::after {
     width: 100%;
+  }
+
+  /* Improved card styling with gradient accents */
+  .card-gradient-blue {
+    @apply bg-gradient-to-br from-indigo-500/5 to-blue-500/3;
+    @apply border border-indigo-500/10;
+  }
+
+  .card-gradient-purple {
+    @apply bg-gradient-to-br from-blue-500/5 to-purple-500/3;
+    @apply border border-blue-500/10;
+  }
+
+  .card-gradient-pink {
+    @apply bg-gradient-to-br from-purple-500/5 to-pink-500/3;
+    @apply border border-purple-500/10;
+  }
+
+  /* Gradient stat numbers */
+  .stat-gradient-1 {
+    @apply bg-gradient-to-r from-indigo-400 to-blue-400;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-gradient-2 {
+    @apply bg-gradient-to-r from-blue-400 to-purple-400;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-gradient-3 {
+    @apply bg-gradient-to-r from-purple-400 to-pink-400;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Improved button hover effect */
+  .btn-gradient-enhanced:hover {
+    @apply shadow-lg shadow-indigo-500/30;
+    transform: translateY(-2px);
+  }
+
+  /* Section divider accent */
+  .accent-line {
+    @apply h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent;
+    @apply opacity-20;
   }
 
 }

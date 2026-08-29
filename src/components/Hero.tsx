@@ -45,10 +45,10 @@ export default function Hero() {
                         </div>
 
                         {/* Heading */}
-                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
                             <span className="gradient-text">{profile.name}</span>
                             <br />
-                            <span className="text-white text-4xl">Développeur Full-Stack</span>
+                            <span className="text-slate-200 text-3xl sm:text-4xl font-medium">Développeur Full-Stack</span>
                         </h1>
 
                         {/* Description */}
@@ -57,14 +57,14 @@ export default function Hero() {
                         </p>
 
                         {/* CTAs */}
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
+                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
                             <a href="#contact"
-                                className="btn-premium btn-gradient text-white px-7 py-3 rounded-lg font-semibold text-sm sm:text-base"
+                                className="btn-premium btn-gradient btn-gradient-enhanced text-white px-8 py-3 rounded-lg font-semibold text-sm sm:text-base shadow-lg shadow-indigo-500/25"
                                 aria-label="Aller à la section contact">
                                 {t.hero.contactBtn}
                             </a>
                             <a href="#projects"
-                                className="px-7 py-3 rounded-lg font-semibold text-sm sm:text-base text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 transition-colors"
+                                className="px-8 py-3 rounded-lg font-semibold text-sm sm:text-base text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300"
                                 aria-label="Voir mes projets">
                                 {t.hero.projectsBtn}
                             </a>
@@ -101,18 +101,18 @@ export default function Hero() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-8 sm:gap-12 mt-16 sm:mt-20 pt-16 sm:pt-20">
+                <div className="grid grid-cols-3 gap-8 sm:gap-12 mt-16 sm:mt-20 pt-16 sm:pt-20 accent-line border-t border-white/5">
                     <div>
-                        <div className="text-2xl sm:text-3xl font-black text-white">10+</div>
-                        <p className="text-slate-400 text-sm mt-2">Ans d'expérience</p>
+                        <div className="text-4xl sm:text-5xl font-black stat-gradient-1 mb-2">10+</div>
+                        <p className="text-slate-400 text-sm font-medium">Ans d'expérience</p>
                     </div>
                     <div>
-                        <div className="text-2xl sm:text-3xl font-black text-white">50+</div>
-                        <p className="text-slate-400 text-sm mt-2">Projets réalisés</p>
+                        <div className="text-4xl sm:text-5xl font-black stat-gradient-2 mb-2">50+</div>
+                        <p className="text-slate-400 text-sm font-medium">Projets réalisés</p>
                     </div>
                     <div>
-                        <div className="text-2xl sm:text-3xl font-black text-white">99%</div>
-                        <p className="text-slate-400 text-sm mt-2">Satisfaction</p>
+                        <div className="text-4xl sm:text-5xl font-black stat-gradient-3 mb-2">99%</div>
+                        <p className="text-slate-400 text-sm font-medium">Satisfaction clients</p>
                     </div>
                 </div>
             </div>

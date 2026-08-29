@@ -26,7 +26,7 @@ const fr = {
         title: 'Qui suis-je ?',
         stats: [
             { value: '10+', label: "Ans d'expérience", icon: '🚀' },
-            { value: '20+', label: 'Projets réalisés', icon: '🏗️' },
+            { value: '50+', label: 'Projets réalisés', icon: '🏗️' },
             { value: '30+', label: 'Technologies', icon: '⚡' },
             { value: '3', label: "Pays d'intervention", icon: '🌍' },
         ],
@@ -176,7 +176,7 @@ const fr = {
         malt: 'Profil Freelance',
     },
     footer: {
-        madeWith: 'React + Vite + Tailwind CSS',
+        madeWith: 'MEG Cooperation',
     },
 };
 

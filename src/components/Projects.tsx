@@ -37,7 +37,7 @@ export default function Projects() {
                         const style = typeBg[project.type] ?? { badge: 'bg-slate-700/50 text-slate-300' };
                         return (
                             <div key={project.name}
-                                className="relative bg-white/3 rounded-xl p-6 hover:bg-white/5 transition-colors group flex flex-col">
+                                className="relative bg-gradient-to-br from-white/3 to-white/5 border border-white/5 hover:border-white/10 rounded-xl p-6 hover:bg-white/7 transition-all duration-300 group flex flex-col">
 
                                 <div className="flex items-start justify-between mb-4">
                                     <h3 className="text-white font-bold text-lg leading-tight">{project.name}</h3>
