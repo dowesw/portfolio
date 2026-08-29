@@ -45,7 +45,7 @@ export default function Navbar() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <a href="#hero" className="flex items-center gap-3 rounded-lg hover:opacity-80 transition-opacity" aria-label="Accueil">
+                    <a href="#hero" className="flex items-center gap-3 rounded-lg hover:opacity-80 transition-opacity" aria-label={t.nav.homeAriaLabel}>
                         <div className="avatar-ring w-8 h-8">
                             <img src="/portfolio/avatar.jpg" alt={profile.name} className="w-full h-full rounded-full object-cover" loading="lazy" />
                         </div>
@@ -78,22 +78,22 @@ export default function Navbar() {
                         <button
                             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
                             className="text-sm font-medium text-slate-400 hover:text-white transition-colors duration-200"
-                            aria-label={lang === 'fr' ? 'Basculer vers l\'anglais' : 'Switch to French'}
-                            title={lang === 'fr' ? 'English' : 'Français'}
+                            aria-label={lang === 'fr' ? t.nav.languageAriaLabelSwitch : t.nav.switchToFrench}
+                            title={lang === 'fr' ? t.nav.english : t.nav.french}
                         >
                             {lang === 'fr' ? 'EN' : 'FR'}
                         </button>
 
                         <a href={profile.malt} target="_blank" rel="noopener noreferrer"
                             className="hidden sm:inline-block btn-premium btn-gradient text-white px-5 py-2 rounded-lg text-sm font-semibold"
-                            aria-label="Disponible - Consulter sur Malt">
+                            aria-label={t.nav.maltAriaLabel}>
                             {t.nav.available}
                         </a>
 
                         <button
                             onClick={() => setOpen(!open)}
                             className="md:hidden p-2 text-slate-400 hover:text-white focus-ring rounded-lg transition-colors"
-                            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+                            aria-label={open ? t.nav.menuCloseAriaLabel : t.nav.menuOpenAriaLabel}
                             aria-expanded={open}
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +128,7 @@ export default function Navbar() {
                         })}
                         <a href={profile.malt} target="_blank" rel="noopener noreferrer"
                             className="block text-center btn-premium btn-gradient text-white py-2 rounded-lg text-sm font-semibold mt-3"
-                            aria-label="Disponible - Consulter sur Malt">
+                            aria-label={t.nav.maltAriaLabel}>
                             {t.nav.availableMobile}
                         </a>
                     </div>

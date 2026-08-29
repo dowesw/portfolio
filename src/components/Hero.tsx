@@ -41,31 +41,31 @@ export default function Hero() {
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-medium text-slate-300 mb-6 sm:mb-8 bg-white/5">
                             <span className="w-2 h-2 rounded-full bg-green-400" />
                             <span className="hidden sm:inline">{t.hero.available} · 🇨🇦 {profile.location}</span>
-                            <span className="sm:hidden">Disponible</span>
+                            <span className="sm:hidden">{t.hero.available}</span>
                         </div>
 
                         {/* Heading */}
                         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
                             <span className="gradient-text">{profile.name}</span>
                             <br />
-                            <span className="text-slate-200 text-3xl sm:text-4xl font-medium">Développeur Full-Stack</span>
+                            <span className="text-slate-200 text-3xl sm:text-4xl font-medium">{t.hero.title}</span>
                         </h1>
 
                         {/* Description */}
                         <p className="text-slate-300 text-base sm:text-lg mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                            Je crée des solutions web robustes et scalables qui transforment les idées en produits réussis.
+                            {t.hero.description}
                         </p>
 
                         {/* CTAs */}
                         <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
                             <a href="#contact"
                                 className="btn-premium btn-gradient btn-gradient-enhanced text-white px-8 py-3 rounded-lg font-semibold text-sm sm:text-base shadow-lg shadow-indigo-500/25"
-                                aria-label="Aller à la section contact">
+                                aria-label={t.hero.contactAriaLabel}>
                                 {t.hero.contactBtn}
                             </a>
                             <a href="#projects"
                                 className="px-8 py-3 rounded-lg font-semibold text-sm sm:text-base text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all duration-300"
-                                aria-label="Voir mes projets">
+                                aria-label={t.hero.projectsAriaLabel}>
                                 {t.hero.projectsBtn}
                             </a>
                         </div>
@@ -73,9 +73,9 @@ export default function Hero() {
                         {/* Social */}
                         <div className="flex flex-wrap justify-center lg:justify-start gap-3">
                             {[
-                                { href: profile.github, icon: <GithubIcon />, label: 'GitHub', ariaLabel: 'Voir mon profil GitHub' },
-                                { href: profile.gitlab, icon: <GitlabIcon />, label: 'GitLab', ariaLabel: 'Voir mon profil GitLab' },
-                                { href: profile.linkedin, icon: <LinkedinIcon />, label: 'LinkedIn', ariaLabel: 'Connecté sur LinkedIn' },
+                                { href: profile.github, icon: <GithubIcon />, label: 'GitHub', ariaLabel: t.hero.githubAriaLabel },
+                                { href: profile.gitlab, icon: <GitlabIcon />, label: 'GitLab', ariaLabel: t.hero.gitlabAriaLabel },
+                                { href: profile.linkedin, icon: <LinkedinIcon />, label: 'LinkedIn', ariaLabel: t.hero.linkedinAriaLabel },
                             ].map(s => (
                                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                                     className="p-3 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
@@ -104,15 +104,15 @@ export default function Hero() {
                 <div className="grid grid-cols-3 gap-8 sm:gap-12 mt-16 sm:mt-20 pt-16 sm:pt-20 accent-line border-t border-white/5">
                     <div>
                         <div className="text-4xl sm:text-5xl font-black stat-gradient-1 mb-2">10+</div>
-                        <p className="text-slate-400 text-sm font-medium">Ans d'expérience</p>
+                        <p className="text-slate-400 text-sm font-medium">{t.hero.statsYearsLabel}</p>
                     </div>
                     <div>
                         <div className="text-4xl sm:text-5xl font-black stat-gradient-2 mb-2">50+</div>
-                        <p className="text-slate-400 text-sm font-medium">Projets réalisés</p>
+                        <p className="text-slate-400 text-sm font-medium">{t.hero.statsProjectsLabel}</p>
                     </div>
                     <div>
                         <div className="text-4xl sm:text-5xl font-black stat-gradient-3 mb-2">99%</div>
-                        <p className="text-slate-400 text-sm font-medium">Satisfaction clients</p>
+                        <p className="text-slate-400 text-sm font-medium">{t.hero.statsSatisfactionLabel}</p>
                     </div>
                 </div>
             </div>

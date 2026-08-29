@@ -20,7 +20,7 @@ export default function About() {
                     </span>
                     <h2 className="text-4xl sm:text-5xl font-black gradient-text mb-6">{t.about.title}</h2>
                     <p className="text-slate-300 text-base max-w-2xl mx-auto">
-                        {lang === 'en' ? 'Background · Skills · Values' : 'Parcours · Compétences · Valeurs'}
+                        {t.about.subtitle}
                     </p>
                 </div>
 

@@ -2,7 +2,7 @@ import { profile } from '../data/portfolio';
 import { useLanguage } from '../i18n/LanguageContext';
 
 export default function Contact() {
-    const { t, lang } = useLanguage();
+    const { t } = useLanguage();
     return (
         <section id="contact" className="py-24 relative overflow-hidden" style={{ background: 'linear-gradient(180deg,#050b18 0%,#0d0a1a 100%)' }}>
             {/* Purple glow */}
@@ -22,20 +22,20 @@ export default function Contact() {
                     <div>
                         <h3 className="text-white font-bold text-base sm:text-lg mb-4 sm:mb-6 flex items-center gap-2">
                             <span className="w-2 h-2 bg-indigo-400 rounded-full"></span>
-                            {lang === 'en' ? 'Why Work With Me?' : 'Pourquoi m\'engager?'}
+                            {t.contact.whyWorkWithMe}
                         </h3>
                         <div className="space-y-3 sm:space-y-4">
                             <div>
-                                <p className="text-slate-300 font-semibold text-sm mb-1">🎯 {lang === 'en' ? 'Measurable Results' : 'Résultats mesurables'}</p>
-                                <p className="text-slate-400 text-sm">{lang === 'en' ? 'Every project delivered exceeds goals. +40% performance on average.' : 'Chaque projet dépasse les objectifs. +40% de performance en moyenne.'}</p>
+                                <p className="text-slate-300 font-semibold text-sm mb-1">🎯 {t.contact.measurableResults}</p>
+                                <p className="text-slate-400 text-sm">{t.contact.measurableResultsDesc}</p>
                             </div>
                             <div>
-                                <p className="text-slate-300 font-semibold text-sm mb-1">⚡ {lang === 'en' ? 'Fast Delivery' : 'Livraison rapide'}</p>
-                                <p className="text-slate-400 text-sm">{lang === 'en' ? 'Optimized agile process. Rapid iterations and constant feedback.' : 'Processus agile optimisé. Itérations rapides et feedback constant.'}</p>
+                                <p className="text-slate-300 font-semibold text-sm mb-1">⚡ {t.contact.fastDelivery}</p>
+                                <p className="text-slate-400 text-sm">{t.contact.fastDeliveryDesc}</p>
                             </div>
                             <div>
-                                <p className="text-slate-300 font-semibold text-sm mb-1">🤝 {lang === 'en' ? 'Transparent Collaboration' : 'Collaboration transparente'}</p>
-                                <p className="text-slate-400 text-sm">{lang === 'en' ? 'Clear communication, regular updates, no surprises.' : 'Communication claire, mises à jour régulières, pas de surprises.'}</p>
+                                <p className="text-slate-300 font-semibold text-sm mb-1">🤝 {t.contact.transparentCollaboration}</p>
+                                <p className="text-slate-400 text-sm">{t.contact.transparentCollaborationDesc}</p>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ export default function Contact() {
                         { href: profile.github, label: 'GitHub', emoji: '🐙', sub: t.contact.github, ariaLabel: 'Voir mon profil GitHub', color: 'hover:text-white' },
                         { href: profile.gitlab, label: 'GitLab', emoji: '🦊', sub: t.contact.gitlab, ariaLabel: 'Voir mon profil GitLab', color: 'hover:text-orange-400' },
                         { href: profile.linkedin, label: 'LinkedIn', emoji: '💼', sub: t.contact.linkedin, ariaLabel: 'Connecté sur LinkedIn', color: 'hover:text-blue-400' },
-                        { href: profile.malt, label: 'Malt', emoji: '🏆', sub: t.contact.malt, ariaLabel: 'Disponible sur Malt', color: 'hover:text-amber-400' },
+                        { href: profile.malt, label: 'Malt', emoji: '🏆', sub: t.contact.malt, ariaLabel: t.contact.maltAriaLabel, color: 'hover:text-amber-400' },
                     ].map((s) => (
                         <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
                             className={`flex flex-col items-center text-center bg-white/3 rounded-xl p-4 text-slate-400 transition-colors hover:bg-white/5 ${s.color}`}

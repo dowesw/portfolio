@@ -18,7 +18,7 @@ export default function Experience() {
                 <div className="text-center mb-20">
                     <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-purple-400 glass mb-4">{t.experience.badge}</span>
                     <h2 className="text-4xl sm:text-5xl font-black gradient-text mb-6">{t.experience.title}</h2>
-                    <p className="text-slate-300 max-w-2xl mx-auto text-lg">Parcours professionnel et expériences clés</p>
+                    <p className="text-slate-300 max-w-2xl mx-auto text-lg">{t.experience.subtitle}</p>
                 </div>
 
                 <div className="relative">

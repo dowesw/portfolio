@@ -92,7 +92,7 @@ export default function Projects() {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-12">
                     <a href="https://github.com/dowesw?tab=repositories" target="_blank" rel="noopener noreferrer"
                         className="btn-premium glass glass-hover text-slate-300 hover:text-white px-6 sm:px-7 py-3 rounded-full font-semibold text-sm sm:text-base inline-flex items-center justify-center gap-2"
-                        aria-label="Voir tous mes projets GitHub">
+                        aria-label={t.projects.githubAllAriaLabel}>
                         <GhIcon />
                         <span className="hidden sm:inline">{t.projects.githubAll}</span>
                         <span className="sm:hidden">GitHub</span>
